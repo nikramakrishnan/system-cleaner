@@ -1,7 +1,8 @@
 '''
 Sweep
 This is a GUI Tool to remove unused Temporary Files
-Copyright Nikhil Ramakrishnan
+Copyright (c) Nikhil Ramakrishnan
+MIT License 
 Made as a part of B.Tech Semester 1 Project at Bennett University
 '''
 
@@ -13,8 +14,8 @@ from tkinter.scrolledtext import ScrolledText
 import tkinter.messagebox as mbox
 
 version='2.2.2'
-displayinfo="Sweep is a software (part of System Cleaner) for Academic Purpose, developed at \
-Bennett University, India, by Nikhil Ramakrishnan.\n\nAll Rights Reserved.\
+displayinfo="Sweep is a program (part of System Cleaner) for Academic Purpose, developed at \
+Bennett University, India, by Nikhil Ramakrishnan.\n\nMIT License.\
 \n\nTHIS SOFTWARE IS DEVELOPED UNDER THE SYSTEM CLEANER PROJECT AT BENNETT UNIVERSITY \
 WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE DEVELOPER, COPYRGIHT OWNER, OR \
 DISTRIBUTOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR ANY OTHER LIABILITY IN ANY WAY \
