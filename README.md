@@ -4,7 +4,10 @@
 System Cleaner:
   - organizes folders
   - cleans up temporary files
-  
+
+## Requirements
+Requires Python 3.5.x+. No external packages required.
+
 ## Working
 Files in the selected folder are sorted depending on their extension/size. Some categories: Videos, Music, Movies etc.
 
