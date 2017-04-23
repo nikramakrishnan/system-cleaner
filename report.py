@@ -1,7 +1,9 @@
 '''
 Report Generator for Folder Sort
 Version - 1.1.0
-Copyright - Nikhil Ramakrishnan
+Copyright (c) Nikhil Ramakrishnan 
+MIT License
+
 
 This is a module to generate reports for Folder Sort using basic HTML Tables
 
@@ -49,9 +51,9 @@ This is an automatically generated report for Folder Sort.\n\
 Report contains a record of the files that were sorted\n\
 including the file name (new name if renamed), source and destination.\n\
 \n\
-Folder Sort is a software (part of System Cleaner) for Academic Purpose, developed at\n\
+Folder Sort is a program (part of System Cleaner) for Academic Purpose, developed at\n\
 Bennett University, India, by Nikhil Ramakrishnan.\n\
-All Rights Reserved.\n\
+MIT License.\n\
 -->\n\
 <head>\n\
 <title>Folder Sort Report</title>\n\
