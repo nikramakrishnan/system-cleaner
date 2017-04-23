@@ -9,7 +9,7 @@ System Cleaner:
 Files in the selected folder are sorted depending on their extension/size. Some categories: Videos, Music, Movies etc.
 
 ## Usage
-Open the 'app-interface.pyw' file, and navigate to the required module. The file for the required file can also be run separately.
+Open the 'app-interface.pyw' file, and navigate to the required module. The file for the required module can also be run separately.
 
 ## Important Note
 On non-Windows systems, the program will try to sort any folder selected, including folders that are crucial to system functioning. In Windows, although most important folders are added to exception, there might be exceptional cases or folders that I missed. Please make sure that you do not select any system folder.
