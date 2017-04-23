@@ -6,7 +6,8 @@ System Cleaner:
   - cleans up temporary files
 
 ## Requirements
-Requires Python 3.5.x+. No external packages required.
+Requires Python 3.5.x+. Should work in 3+ versions, but not tested.
+No external packages required.
 
 ## Working
 Files in the selected folder are sorted depending on their extension/size. Some categories: Videos, Music, Movies etc.
