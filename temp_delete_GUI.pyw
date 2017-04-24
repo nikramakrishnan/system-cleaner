@@ -84,7 +84,6 @@ class App():
         self.txt.insert(tk.INSERT, "Welcome to Sweep Version %s\nClick start to proceed...\n"%version)
         #Disable scrolledtext
         self.txt.configure(state='disabled')
-
         #Menu Bar
         menubar = tk.Menu(self.root)
         helpmenu = tk.Menu(menubar, tearoff=0)
@@ -145,7 +144,7 @@ class App():
                         #Begin Deletion
                         cursize=os.path.getsize(file)
                         print("Deleting ",file,"...",sep="")
-                        #os.remove(file)
+                        os.remove(file)
                         if not os.path.isfile(file):
                             sizerec+=cursize
                         todel+=1
