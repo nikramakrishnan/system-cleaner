@@ -28,4 +28,4 @@ In class 'App', the if conditions can be used to play around with the sorting ru
 To open the programs with console, change file extensions to '.py'.
 
 ## Known Bugs
-  - Program exits with fatal error when file names contain non-latin characters.
+  - Folder Sort does not work with Mac and Linux systems because of Windows-specific implementations.
