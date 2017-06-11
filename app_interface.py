@@ -5,7 +5,7 @@ Copyright (c) Nikhil Ramakrishnan
 MIT License
 Made as a part of B.Tech Semester 1 Project at Bennett University
 '''
-#Import the required Modules. Stop with SystemExit if modules not present 
+#Import the required Modules. Stop with SystemExit if modules not present
 try:
     import subprocess,platform
     import tkinter as tk
@@ -25,7 +25,7 @@ except ImportError as e:
     print("\nProgram will now exit.")
     raise SystemExit
 
-version='2.2.2'
+version='Beta 2.4'
 displayinfo="System Cleaner is a program for Academic Purpose, developed at \
 Bennett University, India, by Nikhil Ramakrishnan.\n\nMIT License.\
 \n\nTHIS SOFTWARE IS DEVELOPED UNDER THE SYSTEM CLEANER PROJECT AT BENNETT UNIVERSITY \
@@ -63,7 +63,7 @@ class FullApp():
 
         #Use the globally defined variable version everywhere in app
         global version
-        
+
         #Text
         self.l1 = tk.Label(text="System Cleaner",font=("Corbel", 25))
         self.l1.configure(fg="#ffffff",bg="#8BC34A")
@@ -83,17 +83,17 @@ class FullApp():
         self.w.configure(bg="#8BC34A")
         self.w.photo = photo
         self.w.pack()
-        
+
         #Blank Space
         #self.l4 = tk.Label(text="",font=("Corbel", 12))
         #self.l4.configure(fg="#ffffff",bg="#8BC34A")
         #self.l4.pack(pady=5)
-        
+
         #Folder Sort Button
         self.sort=tk.Button(self.root, text = 'Folder Sort', command=self.callsort,height='2',font=('Corbel',13))
         self.sort.configure(fg="#212121", bg="#ffffff",bd=-1,activebackground="#689F38")
         self.sort.pack(**button_opt)
-        
+
         #Temp Cleaner button
         self.tempcl=tk.Button(self.root, text = 'Sweep', command=self.callsweep,height='2',font=('Corbel',13))
         self.tempcl.configure(fg="#212121", bg="#ffffff",bd=-1,activebackground="#689F38")
@@ -103,12 +103,12 @@ class FullApp():
         self.info=tk.Button(self.root, text = 'System Information', command=self.sysinfo,height='2',font=('Corbel',13))
         self.info.configure(fg="#212121", bg="#ffffff",bd=-1,activebackground="#689F38")
         self.info.pack(**button_opt)
-        
+
         #Quit Button
         self.quit = tk.Button(self.root, text = 'Close',fg="#a1dbcd", bg="#383a39", command=self.quit,height='2',font=('Corbel',13))
         self.quit.configure(fg="#212121", bg="#ffffff",bd=-1,activebackground="#689F38")
         self.quit.pack(**button_opt)
-        
+
         #Menu Bar
         menubar = tk.Menu(self.root)
         helpmenu = tk.Menu(menubar, tearoff=0)
@@ -123,7 +123,7 @@ class FullApp():
     def callsort(self):
         self.root.destroy()
         sorter.main()
-        
+
     #Call Sweep
     def callsweep(self):
         self.root.destroy()
@@ -140,11 +140,11 @@ class FullApp():
             mbox.showwarning("Operation Not Supported", "This operation is currently supported only on Windows systems.")
         #returncode=p.wait()
         #print(returncode)
-        
+
     #Quit Application
     def quit(self):
         self.root.destroy()
-        
+
     #About InfoBox
     def onInfo(self):
         global displayinfo
