@@ -34,7 +34,7 @@ class report(object):
         global indexiter
         #If file with filename does not exist (This happens in most of the cases)
         if not os.path.exists(self.filename):
-            self.f= open(self.filename,"w+")
+            self.f= open(self.filename,"w+",encoding='utf8')
         else:
             #Check for indexes if filename already exists in folder
             for indexcheck in range(1,indexiter):
@@ -57,6 +57,7 @@ MIT License.\n\
 -->\n\
 <head>\n\
 <title>Folder Sort Report</title>\n\
+<meta charset=\"UTF-8\">\n\
 <style>\n\
 table {\n\
     \tfont-family: arial, sans-serif;\n\
