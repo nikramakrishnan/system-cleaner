@@ -16,7 +16,7 @@ import tkinter.filedialog as filediag
 from tkinter.scrolledtext import ScrolledText
 import tkinter.messagebox as mbox
 
-version='Beta 2.4'
+version='2.4'
 displayinfo="Folder Sort is a program (part of System Cleaner) for Academic Purpose, developed at \
 Bennett University, India, by Nikhil Ramakrishnan.\n\nMIT License.\
 \n\nTHIS SOFTWARE IS DEVELOPED UNDER THE SYSTEM CLEANER PROJECT AT BENNETT UNIVERSITY \

@@ -25,7 +25,7 @@ except ImportError as e:
     print("\nProgram will now exit.")
     raise SystemExit
 
-version='Beta 2.4'
+version='2.4'
 displayinfo="System Cleaner is a program for Academic Purpose, developed at \
 Bennett University, India, by Nikhil Ramakrishnan.\n\nMIT License.\
 \n\nTHIS SOFTWARE IS DEVELOPED UNDER THE SYSTEM CLEANER PROJECT AT BENNETT UNIVERSITY \

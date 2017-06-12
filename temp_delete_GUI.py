@@ -2,7 +2,7 @@
 Sweep
 This is a GUI Tool to remove unused Temporary Files
 Copyright (c) Nikhil Ramakrishnan
-MIT License 
+MIT License
 Made as a part of B.Tech Semester 1 Project at Bennett University
 '''
 
@@ -13,7 +13,7 @@ import tkinter.constants as constants
 from tkinter.scrolledtext import ScrolledText
 import tkinter.messagebox as mbox
 
-version='2.2.2'
+version='2.4'
 displayinfo="Sweep is a program (part of System Cleaner) for Academic Purpose, developed at \
 Bennett University, India, by Nikhil Ramakrishnan.\n\nMIT License.\
 \n\nTHIS SOFTWARE IS DEVELOPED UNDER THE SYSTEM CLEANER PROJECT AT BENNETT UNIVERSITY \
@@ -25,18 +25,18 @@ OUT OF THE USE OF THIS SOFTWARE."
 class ScrolledTextOut(ScrolledText):
     '''This adds functionality to directly insert print statements to tkinter by redifing a few sys functions'''
     def write(self, s):
-        '''This function overrides Python's default sys.stdout.write and inserts all print statements 
+        '''This function overrides Python's default sys.stdout.write and inserts all print statements
         to the tkinter ScrolledText Box'''
         self.insert(tk.INSERT, s)
         self.update()
         self.see(tk.END)
- 
+
     def flush(self):
         pass
 
 #Sweep App Class
 class App():
-    
+
     def __init__(self):
         self.root = tk.Tk()
 
@@ -55,7 +55,7 @@ class App():
         #self.root.geometry('600x600')
         # set the dimensions of the screen and place it
         self.root.geometry('%dx%d+%d+%d' % (w, h, x, y))
-        
+
         self.root.wm_title("Sweep")
         self.root.configure(bg="#8BC34A")
         #self.root.iconbitmap(r'plainicon.ico')
@@ -90,15 +90,15 @@ class App():
         helpmenu.add_command(label="About", command=self.onInfo)
         menubar.add_cascade(label="Help", menu=helpmenu)
         self.root.config(menu=menubar)
-        
+
         #Start the frame
         self.root.mainloop()
-        
+
     #Quit Application
     def quit(self):
         self.root.destroy()
         mainApp.main()
-        
+
     #About InfoBox
     def onInfo(self):
         global displayinfo
@@ -131,7 +131,7 @@ class App():
         total=0
         toperms=0
         sizerec=0
-        
+
         #Begin analysis
         print("Now program will analyze",os.getcwd())
         for file in source:
@@ -166,7 +166,7 @@ class App():
         self.quit.config(state="normal")
         #Come Back to the saved path directory
         os.chdir(self.savedPath)
-        
+
 #Main Program
 if __name__=="__main__":
     app2=App()
