@@ -1,12 +1,12 @@
 '''
 Folder Sort
 This is a GUI Tool to sort a folder
-Copyright (c) Nikhil Ramakrishnan 
+Copyright (c) Nikhil Ramakrishnan
 MIT License
 Made as a part of B.Tech Semester 1 Project at Bennett University
 '''
 
-import sys, shutil,os,time
+import sys, shutil,os,time,platform
 from os.path import expanduser
 import app_interface as mainApp #Program main window
 import report #Report Generator
@@ -15,8 +15,8 @@ import tkinter.constants as constants
 import tkinter.filedialog as filediag
 from tkinter.scrolledtext import ScrolledText
 import tkinter.messagebox as mbox
- 
-version='2.2.2'
+
+version='2.4'
 displayinfo="Folder Sort is a program (part of System Cleaner) for Academic Purpose, developed at \
 Bennett University, India, by Nikhil Ramakrishnan.\n\nMIT License.\
 \n\nTHIS SOFTWARE IS DEVELOPED UNDER THE SYSTEM CLEANER PROJECT AT BENNETT UNIVERSITY \
@@ -31,22 +31,22 @@ checkupto=100
 class ScrolledTextOut(ScrolledText):
     '''This adds functionality to directly insert print statements to tkinter by redifing a few sys functions'''
     def write(self, s):
-        '''This function overrides Python's default sys.stdout.write and inserts all print statements 
+        '''This function overrides Python's default sys.stdout.write and inserts all print statements
         to the tkinter ScrolledText Box'''
         self.insert(tk.END, s)
         self.update()
         self.see(tk.END)
- 
+
     def flush(self):
         pass
 
 #Classes for File Sorting
 #Directory Class
 class Directory(object):
-    
+
     def __init__(self,path):
         self.path=path
-        
+
     def isdir(self):
         '''Returns 1 if directory exists, else returns 0'''
         if os.path.isdir(self.path):
@@ -57,22 +57,28 @@ class Directory(object):
     def isAllowed(self):
         '''Checks if it is safe to sort the supplied directory'''
         self.flag=0
-        #Get Windows Directory
-        winpath = os.environ['WINDIR']
-        winpath = os.path.normcase(os.path.realpath(winpath))
-        
+
         #Get User's home Directory
         home = expanduser("~")
         home = os.path.normcase(os.path.realpath(home))
 
         #Get program's current directory
         #progdir=os.path.normcase(os.path.realpath(os.getcwd()))
-        
-        #These are the directories that cannot be sorted at all, including all subdirectories
-        fulldirs=[winpath,'c:\\drivers','c:\\program files','c:\\program files(x86)','c:\\intel','c:\\perflogs','c:\\programdata','c:\\system.sav']
-        #These directories are the ones that cannot be directly sorted, but subfolders can
-        dirs=['c:\\users','c:\\',home]
-        
+
+        #Initializing lists for non-Windows systems
+        fulldirs=[]
+        dirs=[home]
+
+        #Windows specific implementations (only excecuted if platform is Windows)
+        if platform.system().lower()=='windows':
+            winpath = os.environ['WINDIR']
+            winpath = os.path.normcase(os.path.realpath(winpath))
+            #These are the directories that cannot be sorted at all, including all subdirectories - Only for Windows
+            #TODO - The same for Mac and Linux
+            fulldirs=[winpath,'c:\\drivers','c:\\program files','c:\\program files(x86)','c:\\intel','c:\\perflogs','c:\\programdata','c:\\system.sav']
+            #These directories are the ones that cannot be directly sorted, but subfolders can
+            dirs=['c:\\users','c:\\',home]
+
         normname=os.path.normcase(os.path.realpath(self.path))
         for folder in fulldirs:
             if os.path.commonprefix([normname, folder]) == folder:
@@ -86,7 +92,7 @@ class Directory(object):
             return False
         else:
             return True
-        
+
     def listdir(self):
         '''Returns a list of files and directories in path'''
         self.source=os.listdir(self.path)
@@ -94,13 +100,13 @@ class Directory(object):
 
 #File Sorter Class
 class FileSorter(object):
-    
+
     def __init__(self,file):
         self.file=file
         self.base,self.ext=os.path.splitext(self.file)
         #rep=report.report() #Report generator
         global checkupto
-    
+
     def isMovie(self):
         '''If file is greater than 200MB, returns true
         NOTE: This function assumes file supplied is a video'''
@@ -119,7 +125,7 @@ class FileSorter(object):
             if self.file.lower().endswith(i):
                 return True
                 break
-            
+
     def moveto(self,filetype):
         '''Move the file to the folder named filetype
         This function will create the folder if it does not exist
@@ -144,7 +150,7 @@ class FileSorter(object):
 
 #Folder Sort App class
 class App():
-   
+
     def __init__(self):
         self.root = tk.Tk()
 
@@ -163,13 +169,13 @@ class App():
         #self.root.geometry('600x600')
         # set the dimensions of the screen and place it
         self.root.geometry('%dx%d+%d+%d' % (w, h, x, y))
-        
+
         self.root.wm_title("Folder Sort")
         self.root.configure(bg="#8BC34A")
         #self.root.iconbitmap(r'plainicon.ico')
         global version
         button_opt = {'fill': constants.BOTH, 'padx': 10, 'pady': 10}
-        
+
         # Text
         self.l1 = tk.Label(self.root,text="Folder Sort",font=("Corbel", 25))
         self.l1.configure(fg="#ffffff",bg="#8BC34A")
@@ -194,7 +200,7 @@ class App():
         self.button = tk.Button(self.root, text = 'Close', command=self.quit)
         self.button.configure(fg="#212121", bg="#ffffff",activebackground="#689F38",bd=-1,height='2',font=('Corbel',13))
         self.button.pack(**button_opt)
- 
+
         # Text Widget
         self.txt = ScrolledTextOut(self.root, undo=True)
         self.txt['font'] = ('Corbel', '12')
@@ -211,10 +217,10 @@ class App():
         helpmenu.add_command(label="About", command=self.onInfo)
         menubar.add_cascade(label="Help", menu=helpmenu)
         self.root.config(menu=menubar)
-        
+
         #Start the frame
         self.root.mainloop()
- 
+
     # Quit Application
     def quit(self):
         self.root.destroy()
@@ -224,12 +230,12 @@ class App():
     def onInfo(self):
         global displayinfo
         mbox.showinfo("About Folder Sort", displayinfo)
- 
+
    #Directory Button Function
-    def askdirectory(self): #open the file  
+    def askdirectory(self): #open the file
         directory = filediag.askdirectory()
         self.FolderSort(directory)
- 
+
    #Folder Sort Program
     def FolderSort(self,path):
         #Redirect all print statements to GUI
@@ -262,7 +268,7 @@ class App():
         #Check conditions before sorting
         if direxists==1 and securityerror==0:
             #We are now sure that directory exists and it is ready to be sorted
-            
+
             source=folder.listdir() #create a list of files in folder
             #Start sorting if directory is ready
             #Start Timer
@@ -336,11 +342,11 @@ class App():
                     print("404:Could not sort",file,"due to insufficient permissions.")
             #Calculate total time elapsed
                 elapsed=round((time.clock() - start_time),4)
- 
+
             #Sorting is done, show success message
             print("\nSorting Complete.")
             print("Sorted",sortedfiles,"files in",elapsed,"seconds.")
-    
+
             #This tells our report module to stop adding stuff to the report
             report_loc=rep.done()
 
@@ -356,7 +362,7 @@ class App():
             #Come Back to the saved path directory
             '''The reason this is here is that we can only come back to savedpath when report is done'''
             os.chdir(self.savedPath)
-            
+
             #Now that processing is done, disable scrolledtext again
             self.txt.configure(state='disabled')
             #Reenable buttons
