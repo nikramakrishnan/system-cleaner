@@ -34,5 +34,13 @@ python3 app_interface.py
 ```
 Errors and exceptions (if any) will be printed on the terminal window.
 
+## Contributing
+Clone the repository locally:
+```bash
+git clone https://github.com/nikramakrishnan/system-cleaner.git
+```
+and dive into the code! The code relatively is simple to understand with lots of comments that explain what that function/line does.  
+If you have fixed bugs or added new features, please fork the repository and open a pull request!
+
 ## Known Bugs
   - All known bugs have been fixed. Please check the **Issues** tab for more information and new bugs.
