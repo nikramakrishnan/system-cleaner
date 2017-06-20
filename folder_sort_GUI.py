@@ -316,15 +316,19 @@ class App():
                         res=current.moveto('Presentations')
                         rep.insert([file,os.getcwd(),(os.getcwd()+'\\'+'Presentations')],res)
                     #Compressed
-                    elif current.isFormat(['.zip','.rar','.tar.gz','.tar','.7z','.tgz']):
+                    elif current.isFormat(['.zip','.rar','.tar.gz','.tar','.7z','.tgz','.xip']):
                         res=current.moveto('Compressed')
                         rep.insert([file,os.getcwd(),(os.getcwd()+'\\'+'Compressed')],res)
                     #Programs
                     elif current.isFormat(['.py','.c','.cpp','.java','.pyw']):
                         res=current.moveto('Programs')
                         rep.insert([file,os.getcwd(),(os.getcwd()+'\\'+'Programs')],res)
+                    #Applications (Mac, Linux and Android)
+                    elif current.isFormat(['.dmg','.app','.apk']):
+                        res=current.moveto('Apps')
+                        rep.insert([file,os.getcwd(),(os.getcwd()+'\\'+'Apps')],res)
                     #Softwares (exe files)
-                    elif current.isFormat(['.exe']):
+                    elif current.isFormat(['.exe','.msi','.run']):
                         res=current.moveto('Softwares')
                         rep.insert([file,os.getcwd(),(os.getcwd()+'\\'+'Softwares')],res)
                     #Others (except Directories)
