@@ -373,6 +373,7 @@ class App():
             self.browse.config(state="normal")
             self.button.config(state="normal")
         #END OF FOLDER SORT FUNCTION
+        #end
         #All the errors to print if the folder cannot be sorted
         else:
             if path != '':
