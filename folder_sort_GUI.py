@@ -78,6 +78,10 @@ class Directory(object):
             fulldirs=[winpath,'c:\\drivers','c:\\program files','c:\\program files(x86)','c:\\intel','c:\\perflogs','c:\\programdata','c:\\system.sav']
             #These directories are the ones that cannot be directly sorted, but subfolders can
             dirs=['c:\\users','c:\\',home]
+        # MacOs specific     
+        elif platform.system().lower()=='darwin':
+         	fulldirs=['/private/var','/private/var/folders','/private/var/db','/private/var/tmp','/private/var/VM','/Library','/System/Library','~/Library']
+         	   
 
         normname=os.path.normcase(os.path.realpath(self.path))
         for folder in fulldirs:
