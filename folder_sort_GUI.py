@@ -78,6 +78,12 @@ class Directory(object):
             fulldirs=[winpath,'c:\\drivers','c:\\program files','c:\\program files(x86)','c:\\intel','c:\\perflogs','c:\\programdata','c:\\system.sav']
             #These directories are the ones that cannot be directly sorted, but subfolders can
             dirs=['c:\\users','c:\\',home]
+        elif if platform.system().lower()=='linux':
+            #Prevent most top-level Linux directories from getting sorted... otherwise there might be disaster!
+            fulldirs=['/bin', '/boot', '/dev', '/etc', '/lib', '/lib32', '/lib64', '/libx32', '/lost+found', '/opt',
+                      '/proc', '/run', '/sbin', '/sys', '/usr', '/var']
+            # Home directory can be (mostly) sorted, but only subdirs
+            dirs=['/home', home]
 
         normname=os.path.normcase(os.path.realpath(self.path))
         for folder in fulldirs:
